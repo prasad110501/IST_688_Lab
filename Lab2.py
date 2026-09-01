@@ -1,5 +1,5 @@
 import streamlit as st
-from openai import OpenAI
+
 
 # Show title and description.
 st.title("📄 Document question answering")
@@ -31,11 +31,15 @@ else:
         ["Summarize the document in 100 words","Summarize the document in 2 connecting paragraphs","Summarize the document in 5 bullet points"]
     )
     # Adding the model choice 
-    model_choice = st.selectbox(
-        "Choose a model to test",
-        ["gpt-3.5-turbo", "gpt-4.1", "gpt-5-chat-latest", "gpt-5-nano"]
-    )
+    if st.checkbox("Use the advanced model"):
+        model_choice = "gpt-5-nano"
 
+    else:
+        model_choice = st.selectbox
+        "Choose a model to test",
+        ["gpt-3.5-turbo", "gpt-4.1"]
+
+    
     if uploaded_file and question:
 
         # Process the uploaded file and question.
